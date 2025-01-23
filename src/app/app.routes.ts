@@ -23,9 +23,7 @@ import { HorsesComponent } from './horses/horses.component';
 import { PricingComponent } from './pricing/pricing.component';
 import { PaymentComponent } from './payment/payment.component';
 import { StripeCancelComponent } from './stripe-cancel/stripe-cancel.component';
-import { StripeService } from 'ngx-stripe';
 import { StripeSuccessComponent } from './stripe-success/stripe-success.component';
-
 
 export const routes: Routes = [
   {
@@ -35,7 +33,7 @@ export const routes: Routes = [
   },
   {
     path: 'HomeSingle',
-    component: SingleHomeComponent
+    component: SingleHomeComponent,
   },
   {
     path: 'loginMember',
@@ -51,7 +49,7 @@ export const routes: Routes = [
   },
   {
     path: 'signup',
-    component: SignupComponent
+    component: SignupComponent,
   },
 
   // Admin Dashboard Routes
@@ -62,41 +60,41 @@ export const routes: Routes = [
     children: [
       {
         path: 'all-users',
-        component: AllUsersComponent
+        component: AllUsersComponent,
       },
       {
         path: 'add-new-users',
-        component: AddNewUsersComponent
+        component: AddNewUsersComponent,
       },
       {
         path: 'update-users',
-        component: UpdateUsersComponent
+        component: UpdateUsersComponent,
       },
       {
         path: 'manage-events',
-        component: EventsAdminComponent
+        component: EventsAdminComponent,
       },
       {
         path: 'all-horses',
-        component: AllHorsesComponent
+        component: AllHorsesComponent,
       },
       {
         path: 'add-new-horses',
-        component: ManageHorsesComponent
+        component: ManageHorsesComponent,
       },
       {
         path: 'bookings',
-        component: BookingComponent
+        component: BookingComponent,
       },
       {
-        path:'training',
-        component:TrainingAdminComponent
+        path: 'training',
+        component: TrainingAdminComponent,
       },
       {
-        path:'add-new-training',
-        component:AddNewTrainingComponent
-      }
-    ]
+        path: 'add-new-training',
+        component: AddNewTrainingComponent,
+      },
+    ],
   },
 
   // Layout Member Routes
@@ -106,43 +104,41 @@ export const routes: Routes = [
     children: [
       {
         path: 'home',
-        component: HomeComponent
+        component: HomeComponent,
       },
       {
         path: 'about',
-        component: AboutComponent
+        component: AboutComponent,
       },
       {
         path: 'events',
         component: EventMemberComponent,
       },
       {
-        path:'training',
-        component:TrainingComponent
+        path: 'training',
+        component: TrainingComponent,
       },
       {
-        path:'horses',
-        component:HorsesComponent
+        path: 'horses',
+        component: HorsesComponent,
       },
       {
-        path:'pricing',
-        component:PaymentComponent
+        path: 'pricing',
+        component: PaymentComponent,
       },
       {
-        path:'stripe-successful-payment',
-        component:StripeSuccessComponent
+        path: 'stripe-successful-payment',
+        component: StripeSuccessComponent,
       },
       {
-        path:'payment-cancel',
-        component:StripeCancelComponent
-      }
-    
-    ]
+        path: 'payment-cancel',
+        component: StripeCancelComponent,
+      },
+    ],
   },
   {
-    path:'training',
-    redirectTo: '/layout/training', 
-    pathMatch: 'full'
-  }
-
+    path: 'training',
+    redirectTo: '/layout/training',
+    pathMatch: 'full',
+  },
 ];

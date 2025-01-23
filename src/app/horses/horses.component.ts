@@ -1,35 +1,40 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { StripeFactoryService, StripeInstance } from "ngx-stripe";
-import { loadStripe } from '@stripe/stripe-js';
-import { switchMap } from "rxjs";
-
+import { StripeFactoryService, StripeInstance } from 'ngx-stripe';
+import { switchMap } from 'rxjs';
+import { Router, RouterModule } from '@angular/router';
 interface IStripeSession {
   id: string;
 }
 
 @Component({
   selector: 'app-horses',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './horses.component.html',
-  styleUrls: ['./horses.component.css']
+  styleUrls: ['./horses.component.css'],
 })
-export class HorsesComponent implements OnInit{
+export class HorsesComponent implements OnInit {
   public stripe!: StripeInstance;
   public stripeAmount!: number;
   isLoading: boolean = false;
-  horses: any[] = [];  
+  horses: any[] = [];
   selectedSlot: any = null;
-  elements: any;  
-  cardElement: any; 
-  selectedHorse: any = {};  
+  elements: any;
+  cardElement: any;
+  selectedHorse: any = {};
 
-  constructor(private http: HttpClient, private stripeFactory: StripeFactoryService) {}
+  constructor(
+    private http: HttpClient,
+    private stripeFactory: StripeFactoryService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.fetchHorses();
-    this.stripe = this.stripeFactory.create('pk_test_51QjbyJQI5UEscutgHYRqjfSFek5VfXVymdy7QtxvpYWvBLosjDNBA0Bz4xnCzEKJHZffAnVNgp8qosTMMYrao95O00FHqQbtvx');
+    this.stripe = this.stripeFactory.create(
+      'pk_test_51QjbyJQI5UEscutgHYRqjfSFek5VfXVymdy7QtxvpYWvBLosjDNBA0Bz4xnCzEKJHZffAnVNgp8qosTMMYrao95O00FHqQbtvx'
+    );
     this.stripeAmount = 100;
   }
 
@@ -46,61 +51,85 @@ export class HorsesComponent implements OnInit{
 
   fetchHorses() {
     this.isLoading = true;
-    this.http.get<any>('http://localhost:8006/api/v1/horse/horses', { headers: this.getHeaders() }).subscribe(
-      (res) => {
-        console.log("Fetched horses:", res);
-        this.horses = res.horse || [];  
-        this.isLoading = false;
-      },
-      (error) => {
-        console.log('Error fetching horses:', error);
-        this.isLoading = false;
-      }
-    );
+    this.http
+      .get<any>('http://localhost:8006/api/v1/horse/horses', {
+        headers: this.getHeaders(),
+      })
+      .subscribe(
+        (res) => {
+          console.log('Fetched horses:', res);
+          this.horses = res.horse || [];
+          this.isLoading = false;
+        },
+        (error) => {
+          console.log('Error fetching horses:', error);
+          this.isLoading = false;
+        }
+      );
   }
   selectSlot(horse: any, slot: any): void {
     this.selectedHorse = horse;
-        if (!this.selectedSlot) this.selectedSlot = {};
+    if (!this.selectedSlot) this.selectedSlot = {};
     this.selectedSlot.horseId = horse._id;
     this.selectedSlot.price = horse.price;
-    this.selectedSlot.time = slot.time; 
+    this.selectedSlot.time = slot.time;
 
     console.log(`Selected Slot for ${horse.name}: ${slot.time}`);
-    console.log("Selected Slot Price:", this.selectedSlot.price);
-}
-
-
-checkout() {
-  console.log("Selected Slot for", this.selectedSlot);
-  if (!this.selectedSlot.horseId || !this.selectedSlot.time) {
-      console.error("Horse or Slot not selected.");
-      return;
+    console.log('Selected Slot Price:', this.selectedSlot.price);
   }
-  
-  const requestData = {
+
+  checkout() {
+    console.log('Selected Slot for', this.selectedSlot);
+
+    if (!this.selectedSlot?.horseId || !this.selectedSlot?.time) {
+      console.error('Horse or Slot not selected.');
+      return;
+    }
+
+    const requestData = {
       horseId: this.selectedSlot.horseId,
       slotTime: this.selectedSlot.time,
-      amount: this.selectedSlot.price * 100,  // Convert to cents for Stripe
-  };
+      amount: this.selectedSlot.price * 100, // Convert to cents for Stripe
+    };
 
-  console.log("Sending payment request:", requestData); // Debugging log
+    console.log('Sending payment request:', requestData);
 
-  this.isLoading = true;
-  
-  this.http.post('http://localhost:8006/api/v1/payment/create-checkout-session', 
-  requestData, { headers: this.getHeaders(), observe: 'response' })
-  .pipe(
-      switchMap((response: HttpResponse<Object>) => {
-          const session: IStripeSession = response.body as IStripeSession;
-          return this.stripe.redirectToCheckout({ sessionId: session.id });
-      })
-  )
-  .subscribe(result => {
-      if (result.error) {
-          console.log(result.error);
-      }
-  });
-}
+    this.isLoading = true;
+
+    this.http
+      .post<{ sessionId: string; url: string }>(
+        'http://localhost:8006/api/v1/payment/create-checkout-session',
+        requestData,
+        { headers: this.getHeaders(), observe: 'response' }
+      )
+      .subscribe({
+        next: (response) => {
+          const session = response.body;
+          if (!session?.sessionId) {
+            console.error('No session ID received from server.');
+            this.isLoading = false;
+            return;
+          }
+
+          // Redirect to Stripe Checkout
+          this.stripe
+            .redirectToCheckout({ sessionId: session.sessionId })
+            .subscribe({
+              next: () => {
+                console.log('Stripe Checkout redirection successful.');
+              },
+              error: (err) => {
+                console.error('Stripe Checkout Error:', err.message || err);
+                this.isLoading = false;
+              },
+            });
+        },
+        error: (err) => {
+          console.error('Error creating checkout session:', err.message || err);
+          this.isLoading = false;
+        },
+      });
+  }
 
   confirmPayment(token: string) {
     console.log('Proceeding with payment using token:', token);

@@ -1,5 +1,32 @@
-<div class="container text-center mt-5">
-    <h2 class="text-success">Payment Successful</h2>
-    <p>Thank you for your payment. Your booking has been confirmed.</p>
-    <a routerLink="/" class="btn btn-primary">Return to Home</a>
+<div class="payment-success-container">
+  <div class="payment-success-card">
+    <h1>🎉 Payment Successful!</h1>
+    <p class="status-message">
+      {{ paymentStatus || "Processing your payment confirmation..." }}
+    </p>
+
+    <div
+      *ngIf="paymentStatus === 'Payment completed successfully!'"
+      class="success-details"
+    >
+      <p>Thank you for your payment. Your booking is now confirmed.</p>
+      <p>If you have any questions, feel free to contact our support team.</p>
+    </div>
+
+    <div
+      *ngIf="paymentStatus === 'Payment confirmation failed.'"
+      class="error-details"
+    >
+      <p>Oops! There was an issue confirming your payment.</p>
+      <p>Please try again or contact support if the issue persists.</p>
+    </div>
+
+    <button
+      *ngIf="paymentStatus === 'Payment confirmation failed.'"
+      class="retry-button"
+      (click)="retryPayment()"
+    >
+      Retry Payment
+    </button>
   </div>
+</div>
