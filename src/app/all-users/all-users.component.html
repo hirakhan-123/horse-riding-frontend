@@ -1,0 +1,68 @@
+<div class="all-users-page">
+  <h2>All Users</h2>
+  
+  <!-- Table for displaying user data -->
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Role</th>
+        <th>Verified</th> <!-- New Column for Verified Status -->
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.role }}</td>
+        <td>
+          <span [ngClass]="{'verified': user.verified, 'unverified': !user.verified}">
+            {{ user.verified ? 'Verified' : 'Unverified' }}
+          </span>
+        </td>
+        <td>
+          <button class="edit-btn" (click)="editUser(user)">Edit</button>
+          <button class="delete-btn" (click)="deleteUser(user._id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Edit Form -->
+  <div *ngIf="isEditing" class="edit-form">
+    <h3>Edit User</h3>
+    <form [formGroup]="editUserForm" (ngSubmit)="onEditSubmit()">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input id="name" formControlName="name" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input id="email" formControlName="email" />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone:</label>
+        <input id="phone" formControlName="phone" />
+      </div>
+
+      <div class="form-group">
+        <label for="role">Role:</label>
+        <select id="role" formControlName="role">
+          <option value="rider">Rider</option>
+          <!-- Other roles can be added here -->
+        </select>
+      </div>
+
+      <div class="button-container">
+        <button type="submit" [disabled]="editUserForm.invalid" class="btn-update">Update User</button>
+        <button (click)="cancelEdit()" class="btn-cancel">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

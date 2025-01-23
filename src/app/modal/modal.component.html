@@ -1,0 +1,9 @@
+<div class="modal" *ngIf="isVisible" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h2>{{ eventDetails.eventName }}</h2>
+      <p>{{ eventDetails.eventDate | date: 'dd MMMM yyyy' }} at {{ eventDetails.eventLocation }}</p>
+      <p>{{ eventDetails.eventDescription }}</p>
+      <button (click)="closeModal()">Close</button>
+    </div>
+  </div>
+  

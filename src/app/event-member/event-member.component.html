@@ -1,0 +1,51 @@
+<section class="banner-area relative" id="home"
+  style="background: url('assets/horse-banner.jpg') center center/cover no-repeat; height: 60vh;">
+  <div class="overlay overlay-bg"></div>
+  <div class="container">
+    <div class="row d-flex align-items-center justify-content-center">
+      <div class="about-content col-lg-12 text-center">
+        <h1 class="text-white">Upcoming Events</h1>
+        <p class="text-white link-nav">
+          <a routerLink="home" style="color: #e63946; text-decoration: none;">Home</a>
+          <span class="lnr lnr-arrow-right"></span>
+          <a routerLink="events" style="color: #e63946; text-decoration: none;">Upcoming Events</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="upcoming-event-area section-gap">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-9 pb-40 header-text text-center">
+        <h1 class="pb-10">Checkout our Upcoming Events</h1>
+        <p>Join us for amazing eco-friendly events!</p>
+      </div>
+    </div>
+
+    <!-- Event List Loop -->
+    <div *ngFor="let event of events; let i = index" class="row align-items-center upcoming-wrap"
+      [ngClass]="{'reverse': i % 2 !== 0}">
+      <div class="col-lg-6 upcoming-left">
+        <img class="event-image img-fluid" [src]="'http://localhost:8006' + event.image" alt="Event Image">
+      </div>
+      <div class="col-lg-6 upcoming-right">
+        <a (click)="openModal(event)">
+          <h2>{{ event.eventName }}</h2>
+        </a>
+        <p class="meta">
+          <span>{{ event.eventDate | date: 'dd MMMM yyyy' }}</span> at {{ event.eventLocation }}
+        </p>
+        <p><strong>Start Time:</strong> {{ event.eventStartTime }}</p> <!-- Added eventStartTime -->
+        <p>{{ event.eventDescription }}</p>
+        <a class="primary-btn text-uppercase" (click)="openModal(event)">View Details</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Modal Component -->
+<app-modal [isVisible]="isModalVisible" [eventDetails]="selectedEvent" (closeModalEvent)="closeModal()"></app-modal>

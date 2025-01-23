@@ -1,0 +1,152 @@
+.horse-area {
+  padding: 50px 0;
+  background-color: #f7f7f7;
+}
+
+/* Layout for horse cards */
+.horse-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 25px;
+  transition: transform 0.3s ease;
+  border: 2px solid #b53037;
+  display: flex;
+  flex-direction: column;
+  height: 450px; /* Increased height */
+  justify-content: space-between;
+}
+
+.horse-card:hover {
+  transform: translateY(-8px);
+}
+
+/* **Increased horse image size** */
+.horse-image {
+  position: relative;
+  height: 260px; /* Larger height */
+  overflow: hidden;
+}
+
+.horse-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Overlay on hover */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.horse-card:hover .overlay {
+  opacity: 1;
+}
+
+.view-details-btn {
+  padding: 8px 16px;
+  background-color: #b53037;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.view-details-btn:hover {
+  background-color: #8e1f28;
+}
+
+/* Horse details styling */
+.horse-details {
+  padding: 14px;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.horse-details h4 {
+  font-size: 1.4rem; /* Slightly larger heading */
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.horse-details p {
+  font-size: 1rem; /* Adjusted text size */
+  color: #444;
+  margin-bottom: 5px;
+}
+
+.book-btn {
+  padding: 10px 18px;
+  background-color: #b53037;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.book-btn:hover {
+  background-color: #8e1f28;
+}
+
+/* Slots section */
+.available-slots {
+  margin-top: 10px;
+}
+
+.slots-container {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.slot-box {
+  background-color: #f8f8f8;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 90px; /* Slightly bigger slot */
+  margin-bottom: 8px;
+}
+
+.slot-box span {
+  font-weight: bold;
+  font-size: 0.9rem; /* Slightly bigger text */
+  color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .horse-card {
+      margin-bottom: 20px;
+      height: auto;
+  }
+
+  .horse-image {
+      height: 220px; /* Slightly smaller for mobile */
+  }
+
+  .horse-details h4 {
+      font-size: 1.3rem;
+  }
+
+  .horse-details p {
+      font-size: 0.95rem;
+  }
+}

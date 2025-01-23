@@ -1,0 +1,73 @@
+<div class="all-trainings-page">
+  <h2>All Training Sessions</h2>
+
+  <!-- Table for displaying training data -->
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Trainer</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Time Slot</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let training of trainings">
+        <td>{{ training.title }}</td>
+        <td>{{ training.trainerNames.join(', ') }}</td>
+        <td>{{ training.startDate | date:'short' }}</td>
+        <td>{{ training.endDate | date:'short' }}</td>
+        <td>{{ training.timeSlot }}</td>
+        <td>{{ training.bookings.length }} / {{ training.capacity }} booked</td>
+        <td class="button-container">
+          <button class="edit-btn" (click)="editTraining(training)">Edit</button>
+          <button class="delete-btn" (click)="deleteTraining(training._id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Edit Form -->
+  <div *ngIf="isEditing" class="edit-form">
+    <h3>Edit Training Session</h3>
+    <form [formGroup]="editTrainingForm" (ngSubmit)="onEditSubmit()">
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input id="title" formControlName="title" />
+      </div>
+
+      <div class="form-group">
+        <label for="trainerNames">Trainer Name(s):</label>
+        <input id="trainerNames" formControlName="trainerNames" />
+      </div>
+
+      <div class="form-group">
+        <label for="startDate">Start Date:</label>
+        <input id="startDate" type="date" formControlName="startDate" />
+      </div>
+
+      <div class="form-group">
+        <label for="durationInDays">Duration (Days):</label>
+        <input id="durationInDays" type="number" formControlName="durationInDays" />
+      </div>
+
+      <div class="form-group">
+        <label for="timeSlot">Time Slot:</label>
+        <input id="timeSlot" formControlName="timeSlot" />
+      </div>
+
+      <div class="form-group">
+        <label for="capacity">Capacity:</label>
+        <input id="capacity" type="number" formControlName="capacity" />
+      </div>
+
+      <div class="button-container">
+        <button type="submit" [disabled]="editTrainingForm.invalid" class="btn-update">Update Training</button>
+        <button (click)="cancelEdit()" class="btn-cancel">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

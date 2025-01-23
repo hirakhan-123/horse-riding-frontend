@@ -1,0 +1,75 @@
+<header id="header" class="custom-header">
+    <div class="container">
+      <!-- Header Top -->
+      <div class="row header-top align-items-center">
+        <div class="col-lg-4 col-sm-4 menu-top-left">
+          <a href="mailto:info@horseclub.com" class="contact-link">
+            <span class="lnr lnr-location"></span>
+          </a>
+          <a class="tel contact-link" href="mailto:info@horseclub.com" style="color: black;">{{email1}}</a>
+        </div>
+        <div class="col-lg-4 col-sm-4 menu-top-middle justify-content-center d-flex">
+          <a>
+            <img class="img-fluid logo" src="assets/logo.png" alt="Logo">
+          </a>
+        </div>
+        <div class="col-lg-4 col-sm-4 menu-top-right text-end">
+          <a class="tel contact-link" href="tel:+88012312658439" style="color: black;">+880 123 12 658 439</a>
+          <a href="tel:+88012312658439">
+            <span class="lnr lnr-phone-handset phone-icon"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Full-width Horizontal Line -->
+    <hr class="full-width-hr" />
+  
+  </header>
+<section class="login-admin-section">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Left-side Image Section -->
+        <div class="col-lg-6">
+          <div class="image-container">
+            <img src="../assets/g5.jpg" alt="Admin Login" class="img-fluid">
+          </div>
+        </div>
+  
+        <!-- Login Form on the right side -->
+        <div class="col-lg-6">
+          <h2>Admin Login</h2>
+  
+          <!-- Alert Message -->
+          <div *ngIf="showAlert" class="alert alert-primary alert-dismissible fade show"
+            style="position: fixed; top: 20px; left: 50%; width: 50%; z-index: 1050; margin: 0 0 10px 0; transform: translateX(-50%);">
+            {{ alertMessage }}
+          </div>
+  
+          <div class="login-content">
+            <form [formGroup]="loginObj" (ngSubmit)="onLogin()">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" formControlName="email" type="email" class="form-control" placeholder="Enter your email" />
+                <div *ngIf="loginObj.controls['email'].invalid && loginObj.controls['email'].touched">
+                  <small class="text-danger">Valid email is required.</small>
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" formControlName="password" type="password" class="form-control" placeholder="Enter your password" />
+                <div *ngIf="loginObj.controls['password'].invalid && loginObj.controls['password'].touched">
+                  <small class="text-danger">Password is required.</small>
+                </div>
+              </div>
+  
+              <button type="submit" class="btn btn-red" [disabled]="loginObj.invalid">Login</button>
+            </form>
+  
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

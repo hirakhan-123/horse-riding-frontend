@@ -1,0 +1,73 @@
+<!-- Horse Details Modal -->
+<div id="horseModal" class="modal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Horse Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body d-flex">
+        <!-- Left side: Horse Image -->
+        <div class="col-6">
+          <img id="modalHorseImage" src="" alt="Horse Image" class="img-fluid">
+        </div>
+        <!-- Right side: Horse Details -->
+        <div class="col-6">
+          <h3 id="modalHorseName"></h3>
+          <p id="modalHorseBreed"></p>
+          <p id="modalHorseDescription"></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Horse Area Section -->
+<section class="horse-area section-gap">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-9 pb-40 header-text text-center">
+        <h1 class="pb-10">Explore Our Horses</h1>
+        <p>Choose from our exclusive selection of horses available for riding and training.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-6" *ngFor="let horse of horses">
+        <div class="horse-card">
+          <div class="horse-image">
+            <img class="img-fluid" [src]="'http://localhost:8006' + horse.image" alt="{{ horse.name }}">
+            <div class="overlay">
+              <!-- <button class="view-details-btn" (click)="openHorseModal(horse)">View Details</button> -->
+            </div>
+          </div>
+          <div class="horse-details">
+            <h4>{{ horse.name }}</h4>
+            <p class="breed">Breed: {{ horse.breed }}</p>
+            <p class="description">{{ horse.description }}</p>
+            <p class="price"><strong>Price:</strong> ${{ horse.price }}</p>
+
+            <div class="available-slots">
+              <strong>Available Slots:</strong>
+              <div class="slots-container">
+                <ng-container *ngFor="let slot of horse.slots">
+                  <div class="slot-box" *ngIf="slot.available" (click)="selectSlot(horse, slot)">
+                    <span>{{ slot.time }}</span>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+
+            <div *ngIf="selectedSlot && selectedSlot.horseId === horse._id">
+              <p><strong>Selected Slot:</strong> {{ selectedSlot.time }}</p>
+              <p><strong>Price for this ride:</strong> ${{ horse.price }}</p> 
+              <button class="book-btn" (click)="checkout()">Confirm Booking</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,315 @@
+/* Custom Header */
+.custom-header {
+    background-color: #ffffff;
+    padding: 15px 0;
+    position: sticky; /* Make the navbar sticky */
+    top: 0; /* Ensure it sticks to the top */
+    z-index: 1000; /* Ensure it's above other content */
+    transition: top 0.3s ease; /* Smooth transition for show/hide effect */
+  }
+  
+  /* Header Top */
+  .header-top {
+    margin-bottom: 10px;
+  }
+  
+  /* Full-width Horizontal Line */
+  .full-width-hr {
+    margin: 0;
+    border: 1px solid #ccc;
+    width: 100%;
+  }
+  
+  /* Navigation Menu */
+  .nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-menu li {
+    display: inline-block;
+  }
+  
+  .nav-menu li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .menu-active a {
+    font-weight: bold;
+    color: #000;
+  }
+  
+  /* Buttons */
+  .btn-red {
+    background-color: #e63946;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+  
+  .btn-red:hover {
+    background-color: #b53037;
+  }
+  
+  /* Space Between Buttons */
+  .text-end .btn {
+    margin-right: 10px;
+  }
+  
+  .text-end .btn:last-child {
+    margin-right: 0;
+  }
+  
+  /* Banner Section Styling */
+  .banner-area {
+    background: url('/assets/header-bg.jpg') center center/cover no-repeat;
+    height: 60vh; /* Adjust this value for the desired height */
+    position: relative;
+    display: flex;
+    align-items: center;  /* Vertically center the content */
+    justify-content: center;  /* Horizontally center the content */
+    margin-bottom: 40px; /* Add margin below the banner for spacing */
+  }
+  
+  .overlay-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .banner-content {
+    position: relative;
+    text-align: center;
+    color: white;
+    z-index: 2;
+  }
+  
+  .genric-btn {
+    background-color: #e63946;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .genric-btn:hover {
+    background-color: #b53037;
+  }
+  
+  /* New Section with Left Text and Right Video */
+  .new-feature-area {
+    margin-bottom: 60px;
+    padding: 50px 0;
+    background-color: #f8f8f8; /* Light background color for distinction */
+    margin-bottom: 40px; /* Add margin below the new feature section for spacing */
+  }
+  
+  .left-content h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .left-content h4 {
+    font-size: 24px;
+    color: #555;
+    margin-top: 10px;
+  }
+  
+  .left-content p {
+    font-size: 16px;
+    color: #777;
+    line-height: 1.5;
+    margin-top: 15px;
+  }
+  
+  .left-content .genric-btn {
+    background-color: #e63946;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 20px;
+  }
+  
+  .left-content .genric-btn:hover {
+    background-color: #b53037;
+  }
+  
+  .video-container iframe {
+    border-radius: 8px;
+  }
+  
+  /* Feature Section */
+  .feature-area {
+    background: url('/assets/feature-bg.jpg') center center/cover no-repeat;
+    position: relative;
+    margin-bottom: 60px; 
+    padding-top: 100px;
+    padding-bottom: 40px; /* Increased padding at the bottom for better spacing */
+    background-size: cover;
+    background-position: center center;
+    margin-bottom: 40px; /* Add margin below the feature section for spacing */
+  }
+  
+  .overlay-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Reduced opacity */
+    z-index: 1;
+  }
+  
+  .single-feature {
+    background: transparent; /* Remove white background */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+    z-index: 2;
+    transition: all 0.3s ease-in-out;
+    text-align: center; /* Ensure text is centered */
+    color: #fff !important; /* Ensure text color is white, added !important */
+  }
+  
+  .single-feature a {
+    text-decoration: none;
+    color: inherit; /* Ensure the color of the text stays white by default */
+  }
+  
+  .single-feature h4 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff !important; /* Ensure h4 text is white, added !important */
+    margin-bottom: 15px;
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+    text-transform: uppercase;
+  }
+  
+  .single-feature:hover h4 {
+    color: #e63946 !important; /* Change to red on hover */
+  }
+  
+  .single-feature p {
+    font-size: 16px;
+    color: #fff !important; /* Ensure the paragraph text stays white */
+    line-height: 1.5;
+  }
+  
+  .single-feature:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Hover effect for feature boxes */
+  .single-feature:hover h4 {
+    color: #e63946 !important; /* Ensure the h4 text changes color to red */
+  }
+  
+  /* Footer Area Styling */
+  .footer-area {
+    margin-top: 60px;
+    background-color: #fff;
+    color: #333;
+    padding: 50px 0;
+    font-size: 14px;
+    line-height: 1.8;
+    border-top: 1px solid #ddd;
+  }
+  
+  /* About Us Section */
+  .single-footer-widget h4 {
+    font-size: 18px;
+    color: #222;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .single-footer-widget p {
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  /* Contact Section */
+  .single-footer-widget .number {
+    font-size: 16px;
+    font-weight: bold;
+    color: #222;
+  }
+  
+  /* Newsletter Section */
+  #mc_embed_signup .form-control {
+    width: calc(100% - 50px);
+    height: 40px;
+    padding: 0 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+  
+  #mc_embed_signup .genric-btn {
+    height: 40px;
+    background-color: #e63946;
+    color: #fff;
+    border: none;
+    padding: 0 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  #mc_embed_signup .genric-btn:hover {
+    background-color: #b53037;
+  }
+  
+  /* Footer Bottom Styling */
+  .footer-bottom {
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+    margin-top: 30px;
+  }
+  
+  .footer-bottom .footer-text {
+    color: #555;
+    font-size: 14px;
+  }
+  
+  .footer-bottom .footer-social a {
+    color: #333;
+    font-size: 16px;
+    margin-left: 15px;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-bottom .footer-social a:hover {
+    color: #e63946;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .footer-area {
+        text-align: center;
+    }
+  
+    .footer-bottom {
+        text-align: center;
+    }
+  
+    .footer-bottom .footer-social a {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+  }
+  

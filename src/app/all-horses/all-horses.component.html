@@ -1,0 +1,73 @@
+<div class="all-horses-page">
+  <h2>All Horses</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Breed</th>
+        <th>Description</th>
+        <th>Slots</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let horse of horses">
+        <td>{{ horse.name }}</td>
+        <td>{{ horse.breed }}</td>
+        <td>{{ horse.description }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let slot of horse.slots">
+              {{ slot.time }} - {{ slot.available ? 'Available' : 'Unavailable' }}
+            </li>
+          </ul>
+        </td>
+        <td>
+          <button class="edit-btn" (click)="editHorse(horse)">Edit</button>
+          <button class="delete-btn" (click)="deleteHorse(horse._id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="isEditing">
+    <h3>Edit Horse</h3>
+    <form [formGroup]="editHorseForm" (ngSubmit)="onEditSubmit()">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" formControlName="name" placeholder="Enter horse name" />
+      </div>
+      <div>
+        <label for="breed">Breed</label>
+        <input type="text" formControlName="breed" placeholder="Enter horse breed" />
+      </div>
+      <div>
+        <label for="description">Description</label>
+        <input type="text" formControlName="description" placeholder="Enter horse description" />
+      </div>
+      <div>
+        <label for="image">Upload New Image</label>
+        <input type="file" (change)="onImageChange($event)" />
+      </div>
+  
+      <!-- Slots -->
+      <div formArrayName="slots">
+        <div *ngFor="let slot of slots.controls; let i = index" [formGroupName]="i">
+          <label>Slot Time</label>
+          <input type="text" [value]="slot.value.time" readonly />
+  
+          <label>Available</label>
+          <select formControlName="available">
+            <option [value]="true">Available</option>
+            <option [value]="false">Unavailable</option>
+          </select>
+        </div>
+      </div>
+  
+      <div class="form-buttons">
+        <button type="submit" [disabled]="editHorseForm.invalid" class="btn-update">Update Horse</button>
+        <button type="button" (click)="cancelEdit()" class="btn-cancel">Cancel</button>
+      </div>
+    </form>
+  </div>
+  
+</div>

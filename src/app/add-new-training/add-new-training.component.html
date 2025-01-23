@@ -1,0 +1,131 @@
+<div class="add-training-form">
+  <h2>Add New Training</h2>
+
+  <!-- Alert Section -->
+  <div *ngIf="showAlert" class="alert" [ngClass]="alertType === 'success' ? 'alert-success' : 'alert-danger'">
+    {{ alertMessage }}
+  </div>
+
+  <!-- Reactive Form -->
+  <form [formGroup]="addTrainingForm" (ngSubmit)="onSubmit()">
+    
+    <!-- Title Field -->
+    <div class="form-group">
+      <label for="title">Training Title:</label>
+      <input
+        id="title"
+        formControlName="title"
+        placeholder="Enter training title"
+        [ngClass]="{ 'is-invalid': addTrainingForm.get('title')?.invalid && addTrainingForm.get('title')?.touched }"
+      />
+      <div *ngIf="addTrainingForm.get('title')?.invalid && addTrainingForm.get('title')?.touched" class="error">
+        Training title is required.
+      </div>
+    </div>
+
+    <!-- Description Field -->
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <input
+        id="description"
+        formControlName="description"
+        placeholder="Enter description"
+        [ngClass]="{ 'is-invalid': addTrainingForm.get('description')?.invalid && addTrainingForm.get('description')?.touched }"
+      />
+      <div *ngIf="addTrainingForm.get('description')?.invalid && addTrainingForm.get('description')?.touched" class="error">
+        Description is required.
+      </div>
+    </div>
+
+    <!-- Duration Field -->
+    <div class="form-group">
+      <label for="durationInDays">Duration (Days):</label>
+      <input
+        id="durationInDays"
+        type="number"
+        formControlName="durationInDays"
+        placeholder="Enter duration in days"
+        [ngClass]="{ 'is-invalid': addTrainingForm.get('durationInDays')?.invalid && addTrainingForm.get('durationInDays')?.touched }"
+      />
+      <div *ngIf="addTrainingForm.get('durationInDays')?.invalid && addTrainingForm.get('durationInDays')?.touched" class="error">
+        Duration is required and must be a positive number.
+      </div>
+    </div>
+
+    <!-- Session Duration Field -->
+    <div class="form-group">
+      <label for="sessionDurationInHours">Session Duration (Hours):</label>
+      <input
+        id="sessionDurationInHours"
+        type="number"
+        formControlName="sessionDurationInHours"
+        placeholder="Enter session duration in hours"
+        [ngClass]="{ 'is-invalid': addTrainingForm.get('sessionDurationInHours')?.invalid && addTrainingForm.get('sessionDurationInHours')?.touched }"
+      />
+      <div *ngIf="addTrainingForm.get('sessionDurationInHours')?.invalid && addTrainingForm.get('sessionDurationInHours')?.touched" class="error">
+        Session duration is required.
+      </div>
+    </div>
+
+    <!-- Price Field -->
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input
+        id="price"
+        type="number"
+        formControlName="price"
+        placeholder="Enter price"
+        [ngClass]="{ 'is-invalid': addTrainingForm.get('price')?.invalid && addTrainingForm.get('price')?.touched }"
+      />
+      <div *ngIf="addTrainingForm.get('price')?.invalid && addTrainingForm.get('price')?.touched" class="error">
+        Price is required and must be a positive number.
+      </div>
+    </div>
+
+    <!-- Trainer Name Field -->
+    <div class="form-group">
+      <label for="trainerNames">Trainer Names (comma-separated):</label>
+      <input
+        id="trainerNames"
+        type="text"
+        formControlName="trainerNames"
+        placeholder="Enter trainer names"
+        [ngClass]="{ 'is-invalid': addTrainingForm.get('trainerNames')?.invalid && addTrainingForm.get('trainerNames')?.touched }"
+      />
+      <div *ngIf="addTrainingForm.get('trainerNames')?.invalid && addTrainingForm.get('trainerNames')?.touched" class="error">
+        At least one trainer is required.
+      </div>
+    </div>
+
+    <!-- Start Date Field -->
+    <div class="form-group">
+      <label for="startDate">Start Date:</label>
+      <input
+        id="startDate"
+        type="date"
+        formControlName="startDate"
+        [ngClass]="{ 'is-invalid': addTrainingForm.get('startDate')?.invalid && addTrainingForm.get('startDate')?.touched }"
+      />
+      <div *ngIf="addTrainingForm.get('startDate')?.invalid && addTrainingForm.get('startDate')?.touched" class="error">
+        Start Date is required.
+      </div>
+    </div>
+
+    <!-- Time Slot Field -->
+    <div class="form-group">
+      <label for="timeSlot">Time Slot:</label>
+      <input
+        id="timeSlot"
+        formControlName="timeSlot"
+        placeholder="Enter time slot"
+        [ngClass]="{ 'is-invalid': addTrainingForm.get('timeSlot')?.invalid && addTrainingForm.get('timeSlot')?.touched }"
+      />
+      <div *ngIf="addTrainingForm.get('timeSlot')?.invalid && addTrainingForm.get('timeSlot')?.touched" class="error">
+        Time slot is required.
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="addTrainingForm.invalid">Add Training</button>
+  </form>
+</div>

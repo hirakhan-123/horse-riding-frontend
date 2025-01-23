@@ -1,0 +1,88 @@
+<div class="admin-dashboard">
+  <nav class="sidebar">
+    <ul>
+      <li><a routerLink="/admin-dashboard" class="active">Dashboard</a></li>
+
+      <!-- Dropdown for Manage Users -->
+      <li class="dropdown">
+        <a class="dropbtn">Manage Users</a>
+        <div class="dropdown-content">
+          <a routerLink="all-users">All Users</a>
+          <a routerLink="add-new-users">Add New User</a>
+        </div>
+      </li>
+
+      <li class="dropdown">
+        <a class="dropbtn">Manage Horses</a>
+        <div class="dropdown-content">
+          <a routerLink="all-horses">All Horses</a>
+          <a routerLink="add-new-horses">Add New Horse</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <a class="dropbtn">Manage Trainings</a>
+        <div class="dropdown-content">
+          <a routerLink="training">All Trainings</a>
+          <a routerLink="add-new-training">Add New Training</a>
+        </div>
+      </li>
+      <li><a routerLink="manage-events" class="active">Events</a></li>
+      <li><a routerLink="bookings" class="active">Bookings</a></li>
+      <li><a href="/settings" class="active">Settings</a></li>
+    </ul>
+  </nav>
+
+  <div class="main-content">
+    <header>
+      <h1>Admin Dashboard</h1>
+      <div class="user-info">
+        <span>Welcome, Admin</span>
+        <button (click)="logout()">Logout</button>
+      </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div *ngIf="isPageReady">
+      <div *ngIf="isDashboardRoute">
+        <div class="content">
+          <h2>Dashboard Overview</h2>
+          <div class="dashboard-cards">
+            <!-- User Management Card -->
+            <div class="card" [routerLink]="['all-users']">
+              <h3>User Management</h3>
+              <p>Manage accounts, roles, and activity logs.</p>
+            </div>
+  
+            <!-- Riding Sessions Card -->
+            <div class="card" [routerLink]="['bookings']">
+              <h3>Riding Sessions</h3>
+              <p>Schedule and manage bookings.</p>
+            </div>
+  
+            <!-- Horse Management Card -->
+            <div class="card" [routerLink]="['all-horses']">
+              <h3>Horse Management</h3>
+              <p>Track horse profiles and availability.</p>
+            </div>
+  
+            <!-- Event Management Card -->
+            <div class="card" [routerLink]="['manage-events']">
+              <h3>Event Management</h3>
+              <p>Organize events and manage participants.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add New User Form -->
+    <router-outlet></router-outlet>
+
+    <!-- Footer -->
+    <footer class="footer-area">
+      <div class="container">
+        <p>© 2025 RideSwift. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </div>
+</div>

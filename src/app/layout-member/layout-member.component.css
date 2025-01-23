@@ -1,0 +1,222 @@
+/* Custom Header */
+.custom-header {
+    background-color: #ffffff;
+    padding: 15px 0;
+    position: sticky; /* Make the navbar sticky */
+    top: 0; /* Ensure it sticks to the top */
+    z-index: 1000; /* Ensure it's above other content */
+    transition: top 0.3s ease; /* Smooth transition for show/hide effect */
+    flex-shrink: 0;
+  }
+  
+  /* Header Top */
+  .header-top {
+    margin-bottom: 10px;
+  }
+  /* Styling the logo and RideSwift text */
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 40px; /* Adjust the size of the logo */
+  margin-right: 10px; /* Space between logo and text */
+}
+
+.ride-swift-text {
+  font-size: 24px; /* Adjust the size of the text */
+  font-weight: bold;
+  color: #333; /* You can adjust this to match your design */
+  letter-spacing: 2px; /* Add spacing between letters if you like */
+}
+
+  /* Style for the email icon */
+.email-icon {
+  width: 35px; /* Size of the email icon */
+  height: 30px;
+  margin-right: 8px; /* Space between the icon and the text */
+  vertical-align: middle; /* Align icon vertically with text */
+}
+.call-icon{
+  width: 35px; /* Size of the email icon */
+  height: 30px;
+  margin-right: 8px; /* Space between the icon and the text */
+  vertical-align: middle; 
+}
+/* Adjust the size of the logo */
+.logo {
+  width: 50px; /* Adjust this value as needed */
+  height: auto; /* Maintain aspect ratio */
+  max-width: 100%; /* Ensure it is responsive */
+}footer-text
+
+
+  /* Full-width Horizontal Line */
+  .full-width-hr {
+    margin: 0;
+    border: 1px solid #ccc;
+    width: 100%;
+  }
+  
+  /* Navigation Menu */
+  .nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-menu li {
+    display: inline-block;
+  }
+  
+  .nav-menu li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .menu-active a {
+    font-weight: bold;
+    color: #000;
+  }
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center */
+    align-items: center; /* Horizontally center */
+  }
+  /* Buttons */
+  .btn-red {
+    background-color: #e63946;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+  
+  .btn-red:hover {
+    background-color: #b53037;
+  }
+  
+  /* Space Between Buttons */
+  .text-end .btn {
+    margin-right: 10px;
+  }
+  
+  .text-end .btn:last-child {
+    margin-right: 0;
+  }
+  /* Footer Area Styling */
+.footer-area {
+    margin-top: 60px;
+    background-color: #fff;
+    color: #333;
+    padding: 50px 0;
+    font-size: 14px;
+    line-height: 1.8;
+    border-top: 1px solid #ddd;
+  }
+  
+  /* About Us Section */
+  .single-footer-widget h4 {
+    font-size: 18px;
+    color: #222;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .single-footer-widget p {
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  /* Contact Section */
+  .single-footer-widget .number {
+    font-size: 16px;
+    font-weight: bold;
+    color: #222;
+  }
+  
+  /* Newsletter Section */
+  #mc_embed_signup .form-control {
+    width: calc(100% - 50px);
+    height: 40px;
+    padding: 0 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+  
+  #mc_embed_signup .genric-btn {
+    height: 40px;
+    background-color: #e63946;
+    color: #fff;
+    border: none;
+    padding: 0 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  #mc_embed_signup .genric-btn:hover {
+    background-color: #b53037;
+  }
+  
+  .footer-area {
+    flex-shrink: 0;
+    background-color: #fff;
+    color: #333;
+    padding: 30px 0;
+    font-size: 14px;
+    line-height: 1.8;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    margin-top: 30px; /* Specific margin above the footer */
+  }
+  
+  /* Footer Bottom Styling */
+  .footer-bottom {
+    border-top: 1px solid #ddd;
+    padding: 0px 0;
+    margin-top: 5px;
+    text-align: center;
+  }
+  
+  .footer-bottom .footer-text {
+    color: #555;
+    font-size: 14px;
+  }
+  
+  /* Footer Social Links */
+  .footer-bottom .footer-social a {
+    color: #333;
+    font-size: 16px;
+    margin-left: 15px;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-bottom .footer-social a:hover {
+    color: #e63946;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .footer-area {
+      text-align: center;
+    }
+  
+    .footer-bottom {
+      text-align: center;
+    }
+  
+    .footer-bottom .footer-social a {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }

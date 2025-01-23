@@ -1,0 +1,106 @@
+<div *ngIf="showAlert" [ngClass]="'alert ' + alertType + ' alert-dismissible fade show'"
+  style="position: fixed; top: 20px; left: 50%; width: 50%; z-index: 1050; margin: 0 0 10px 0; transform: translateX(-50%);">
+  {{ alertMessage }}
+</div>
+
+<header id="header" class="custom-header">
+    <div class="container">
+      <!-- Header Top -->
+      <div class="row header-top align-items-center">
+        <div class="col-lg-4 col-sm-4 menu-top-left">
+          <a href="mailto:info@horseclub.com" class="contact-link">
+            <span class="lnr lnr-location"></span>
+          </a>
+          <a class="tel contact-link" href="mailto:info@horseclub.com" style="color: black;">{{email1}}</a>
+        </div>
+        <div class="col-lg-4 col-sm-4 menu-top-middle justify-content-center d-flex">
+          <a>
+            <img class="img-fluid logo" src="assets/logo.png" alt="Logo">
+          </a>
+        </div>
+        <div class="col-lg-4 col-sm-4 menu-top-right text-end">
+          <a class="tel contact-link" href="tel:+88012312658439" style="color: black;">+880 123 12 658 439</a>
+          <a href="tel:+88012312658439">
+            <span class="lnr lnr-phone-handset phone-icon"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Full-width Horizontal Line -->
+    <hr class="full-width-hr" />
+  </header>
+  
+  <section class="signup-section">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Image on the left side -->
+        <div class="col-lg-6">
+          <div class="image-container">
+            <img src="../assets/g5.jpg" alt="Horse Image" class="img-fluid">
+          </div>
+        </div>
+  
+        <!-- Signup Form on the right side -->
+        <div class="col-lg-6">
+          <h2>Signup</h2>
+  
+          <!-- Alert Message -->
+          <div *ngIf="showAlert" class="alert alert-primary alert-dismissible fade show"
+            style="position: fixed; top: 20px; left: 50%; width: 50%; z-index: 1050; margin: 0 0 10px 0; transform: translateX(-50%);">
+            {{ alertMessage }}
+          </div>
+  
+          <div class="signup-content">
+            <form [formGroup]="signupObj" (ngSubmit)="onSignup()">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input id="name" formControlName="name" type="text" class="form-control" placeholder="Enter your name" />
+                <div *ngIf="signupObj.controls['name'].invalid && signupObj.controls['name'].touched">
+                  <small class="text-danger">Name is required.</small>
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" formControlName="email" type="email" class="form-control" placeholder="Enter your email" />
+                <div *ngIf="signupObj.controls['email'].invalid && signupObj.controls['email'].touched">
+                  <small class="text-danger">Valid email is required.</small>
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" formControlName="password" type="password" class="form-control" placeholder="Enter your password" />
+                <div *ngIf="signupObj.controls['password'].invalid && signupObj.controls['password'].touched">
+                  <small class="text-danger">Password is required (min. 6 characters).</small>
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input id="phone" formControlName="phone" type="text" class="form-control" placeholder="Enter your phone" />
+                <div *ngIf="signupObj.controls['phone'].invalid && signupObj.controls['phone'].touched">
+                  <small class="text-danger">Phone number is required.</small>
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <label for="role">Role</label>
+                <select id="role" formControlName="role" class="form-control">
+                  <option value="rider">Rider</option>
+                </select>
+                <div *ngIf="signupObj.controls['role'].invalid && signupObj.controls['role'].touched">
+                  <small class="text-danger">Role is required.</small>
+                </div>
+              </div>
+  
+              <button type="submit" class="btn btn-red" [disabled]="signupObj.invalid">Signup</button>
+            </form>
+  
+            <p>Already have an account? <a routerLink="/loginMember">Login</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

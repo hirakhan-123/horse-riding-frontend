@@ -1,0 +1,93 @@
+/* Container for the pricing section */
+.pricing-container {
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  /* Title of the pricing section */
+  .pricing-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #333;
+  }
+  
+  /* Layout for the pricing cards */
+  .pricing-cards {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  /* Individual card styling */
+  .pricing-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    width: 30%; /* Adjust width to make it fit in a row */
+    transition: transform 0.3s ease;
+    border: 2px solid #b53037;
+  }
+  
+  /* Hover effect to make card grow */
+  .pricing-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  /* Card header styling */
+  .card-header h2 {
+    font-size: 1.8rem;
+    color: #b53037; /* Using the specified color */
+    margin-bottom: 0.5rem;
+  }
+  
+  .card-header .price {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #28a745;
+    margin-bottom: 1rem;
+  }
+  
+  /* List of features in each plan */
+  .features {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .features li {
+    font-size: 1rem;
+    color: #555;
+    margin: 0.5rem 0;
+  }
+  
+  /* Button styling */
+  .btn {
+    padding: 1rem 2rem;
+    background-color: #b53037; /* Using the specified color */
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #8e1f28; /* Darker shade on hover */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .pricing-cards {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  
+    .pricing-card {
+      width: 80%; /* Adjust width for smaller screens */
+      margin: 0 auto;
+    }
+  }
+  

@@ -1,0 +1,41 @@
+<section class="banner-area relative" id="home" style="background: url('assets/horse-banner.jpg') center center/cover no-repeat; height: 60vh;">
+  <div class="overlay overlay-bg"></div>
+  <div class="container">
+    <div class="row d-flex align-items-center justify-content-center">
+      <div class="about-content col-lg-12 text-center">
+        <h1 class="text-white">Training Programs</h1>
+        <p class="text-white link-nav">
+          <a routerLink="home" style="color: #fff; text-decoration: none;">Home</a>
+          <span class="lnr lnr-arrow-right"></span>
+          <a routerLink="training" style="color: #fff; text-decoration: none;">Training</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="training-area section-gap">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-9 pb-40 header-text text-center">
+        <h1 class="pb-10">Discover Our Training Programs</h1>
+        <p>Choose from our exclusive horse riding training plans designed for all skill levels.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-6" *ngFor="let training of trainings">
+        <div class="training-card">
+          <div class="training-details">
+            <h4>{{ training.title }}</h4>
+            <p class="price">${{ training.price }}</p>
+            <p>{{ training.description }}</p>
+            <p><strong>Duration:</strong> {{ training.durationInDays }} Days</p>
+            <p><strong>Session Duration:</strong> {{ training.sessionDurationInHours }} Hours</p>
+            <p><strong>Trainers:</strong> {{ training.trainerNames.join(', ') }}</p>
+            <button (click)="enroll(training)" class="enroll-btn">Enroll Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

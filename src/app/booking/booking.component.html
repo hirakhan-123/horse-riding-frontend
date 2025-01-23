@@ -1,0 +1,73 @@
+<div class="booking-management-container">
+  <h2>Admin Booking Management</h2>
+
+  <div *ngIf="loading" class="loading-spinner">
+    <p>Loading bookings...</p>
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    <p>{{ error }}</p>
+  </div>
+
+  <div class="bookings-container" *ngIf="!loading && !error">
+    <!-- Horse Bookings Section -->
+    <div class="bookings-section">
+      <h3>Horse Bookings</h3>
+      <table class="booking-table">
+        <thead>
+          <tr>
+            <th>Booking ID</th>
+            <th>User</th>
+            <th>Horse</th>
+            <th>Booking Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let booking of horseBookings">
+            <td>{{ booking._id }}</td>
+            <td>{{ booking.user?.name || 'N/A' }}</td>
+            <td>{{ booking.horse?.name || 'N/A' }}</td>
+            <td>{{ booking.bookingDate | date:'short' }}</td>
+            <td>{{ booking.status }}</td>
+            <td>
+              <button (click)="updateBookingStatus(booking._id, 'Confirmed')">Confirm</button>
+              <button (click)="cancelBooking(booking._id)">Cancel Booking</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Training Bookings Section -->
+    <div class="bookings-section">
+      <h3>Training Bookings</h3>
+      <table class="booking-table">
+        <thead>
+          <tr>
+            <th>Booking ID</th>
+            <th>User</th>
+            <th>Training</th>
+            <th>Booking Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let booking of trainingBookings">
+            <td>{{ booking._id }}</td>
+            <td>{{ booking.user?.name || 'N/A' }}</td>
+            <td>{{ booking.training?._id || 'N/A' }}</td>
+            <td>{{ booking.bookingDate | date:'short' }}</td>
+            <td>{{ booking.status }}</td>
+            <td>
+              <button (click)="updateBookingStatus(booking._id, 'Confirmed')">Confirm</button>
+              <button (click)="cancelBooking(booking._id)">Cancel Booking</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

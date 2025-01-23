@@ -1,0 +1,86 @@
+<div class="add-user-form">
+  <h2>Add New User</h2>
+
+  <!-- Alert Section -->
+  <div *ngIf="showAlert" class="alert" [ngClass]="alertType === 'success' ? 'alert-success' : 'alert-danger'">
+    {{ alertMessage }}
+  </div>
+
+  <!-- Reactive Form -->
+  <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
+    <!-- Name Field -->
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input
+        id="name"
+        formControlName="name"
+        placeholder="Enter name"
+        [ngClass]="{ 'is-invalid': addUserForm.get('name')?.invalid && addUserForm.get('name')?.touched }"
+      />
+      <div *ngIf="addUserForm.get('name')?.invalid && addUserForm.get('name')?.touched" class="error">
+        Name is required.
+      </div>
+    </div>
+
+    <!-- Email Field -->
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input
+        id="email"
+        formControlName="email"
+        placeholder="Enter email"
+        [ngClass]="{ 'is-invalid': addUserForm.get('email')?.invalid && addUserForm.get('email')?.touched }"
+      />
+      <div *ngIf="addUserForm.get('email')?.invalid && addUserForm.get('email')?.touched" class="error">
+        Valid email is required.
+      </div>
+    </div>
+
+    <!-- Password Field -->
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        placeholder="Enter password"
+        [ngClass]="{ 'is-invalid': addUserForm.get('password')?.invalid && addUserForm.get('password')?.touched }"
+      />
+      <div *ngIf="addUserForm.get('password')?.invalid && addUserForm.get('password')?.touched" class="error">
+        Password must be at least 6 characters.
+      </div>
+    </div>
+
+    <!-- Phone Field -->
+    <div class="form-group">
+      <label for="phone">Phone:</label>
+      <input
+        id="phone"
+        formControlName="phone"
+        placeholder="Enter phone number"
+        [ngClass]="{ 'is-invalid': addUserForm.get('phone')?.invalid && addUserForm.get('phone')?.touched }"
+      />
+      <div *ngIf="addUserForm.get('phone')?.invalid && addUserForm.get('phone')?.touched" class="error">
+        Enter a valid phone number (10-15 digits).
+      </div>
+    </div>
+
+    <!-- Role Selection -->
+    <div class="form-group">
+      <label for="role">Role:</label>
+      <select
+        [id]="'role-' + formId"
+        formControlName="role"
+        [ngClass]="{ 'is-invalid': addUserForm.get('role')?.invalid && addUserForm.get('role')?.touched }"
+      >
+        <option value="rider">Rider</option>
+      </select>
+      <div *ngIf="addUserForm.get('role')?.invalid && addUserForm.get('role')?.touched" class="error">
+        Please select a valid role.
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="addUserForm.invalid">Add User</button>
+  </form>
+</div>

@@ -1,0 +1,46 @@
+<div class="manage-events-container">
+  <h2>Manage Events</h2>
+
+  <form [formGroup]="eventForm" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="eventName">Event Name:</label>
+      <input id="eventName" formControlName="eventName" placeholder="Enter event name" />
+    </div>
+
+    <div class="form-group">
+      <label for="eventDate">Event Date:</label>
+      <input type="date" id="eventDate" formControlName="eventDate" />
+    </div>
+
+    <div class="form-group">
+      <label for="eventLocation">Event Location:</label>
+      <input id="eventLocation" formControlName="eventLocation" placeholder="Enter event location" />
+    </div>
+
+    <div class="form-group">
+      <label for="eventStartTime">Event Start Time:</label>
+      <input type="time" id="eventStartTime" formControlName="eventStartTime" />
+    </div>
+
+    <div class="form-group">
+      <label for="image">Event Image:</label>
+      <input type="file" id="image" formControlName="image" (change)="onImageSelect($event)" accept="image/*" />
+      <img *ngIf="selectedImagePreview" [src]="selectedImagePreview" alt="Event Image Preview" class="image-preview" />
+    </div>
+
+    <button *ngIf="!selectedEvent" (click)="addEvent()">Add Event</button>
+    <button *ngIf="selectedEvent" (click)="updateEvent()">Update Event</button>
+  </form>
+</div>
+
+<h3>Upcoming Events</h3>
+<div class="events-container">
+  <div *ngFor="let event of events" class="event-card">
+    <h4>{{ event.eventName }}</h4>
+    <p><strong>Date:</strong> {{ event.eventDate | date }}</p>
+    <p><strong>Location:</strong> {{ event.eventLocation }}</p>
+    <p><strong>Start Time:</strong> {{ event.eventStartTime }}</p>
+    <img *ngIf="event.image" [src]="'http://localhost:8006' + event.image" alt="Event Image" class="event-image" />
+    <button (click)="editEvent(event)">Edit</button>
+  </div>
+</div>

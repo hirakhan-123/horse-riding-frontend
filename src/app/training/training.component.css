@@ -1,0 +1,86 @@
+.training-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+  margin-bottom: 20px;
+  transition: 0.3s ease-in-out;
+}
+
+.training-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.training-image {
+  position: relative;
+  background: #f0f0f0; /* Set a background color or a gradient */
+  height: 250px; /* Keep a fixed height for the section */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.training-card:hover .overlay {
+  opacity: 1;
+}
+
+.view-details-btn {
+  background: #e63946;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  position: relative;
+  z-index: 2;
+}
+
+.view-details-btn:hover {
+  background: #d62839;
+  transform: scale(1.05);
+}
+
+.training-details {
+  padding: 15px;
+  text-align: center;
+}
+
+.training-details h4 {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.training-details .price {
+  color: #e63946;
+  font-weight: bold;
+}
+
+.enroll-btn {
+  background: #e63946;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.enroll-btn:hover {
+  background: #bbb;
+  transform: scale(1.05);
+}

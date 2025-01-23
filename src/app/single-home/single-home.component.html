@@ -1,0 +1,212 @@
+<header id="header" class="custom-header">
+  <div class="container">
+    <!-- Header Top -->
+    <div class="row header-top align-items-center">
+      <div class="col-lg-4 col-sm-4 menu-top-left">
+        <a href="mailto:info@horseclub.com" class="contact-link">
+          <img src="assets/email-logo.avif" alt="Email Icon" class="email-icon">
+          <span class="lnr lnr-location"></span>
+        </a>
+        <a class="tel contact-link" href="mailto:info@horseclub.com" style="color: black;">{{email}}</a>
+      </div>
+      <div class="col-lg-4 col-sm-4 menu-top-middle justify-content-center d-flex">
+        <div class="logo-container">
+          <img class="img-fluid logo" src="assets/horse-logo.png" alt="Logo">
+          <span class="ride-swift-text">RideSwift</span> 
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-4 menu-top-right text-end">
+        <a class="tel contact-link" href="tel:+88012312658439" style="color: black;">+880 123 12 658 439</a>
+        <a href="tel:+88012312658439">
+          <span class="lnr lnr-phone-handset phone-icon"></span>
+          <img src="assets/call-image-removebg-preview.png" alt="Email Icon" class="call-icon">
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- Full-width Horizontal Line -->
+  <hr class="full-width-hr" />
+  <!-- Navigation -->
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col d-flex">
+        <nav id="nav-menu-container">
+          <ul class="nav-menu d-flex align-items-center">
+            <li class="menu-active"><a routerLink="/banner">Home</a></li>
+            <li><a routerLink="/about">About</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="col text-end">
+        <a class="btn btn-red me-2" routerLink="/loginMember">Login as Member</a>
+        <a class="btn btn-red" routerLink="/loginAdmin">Login as Admin</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Banner Section with Image -->
+<section class="banner-area relative" id="home"
+  style="background: url('assets/horse-banner.jpg') center center/cover no-repeat; height: 60vh;">
+  <div class="overlay overlay-bg"></div>
+  <div class="container">
+    <div class="row fullscreen d-flex align-items-center justify-content-center">
+      <div class="banner-content col-lg-12 text-center">
+        <!-- Updated Headline -->
+        <h6>Welcome to the Horse Club</h6>
+        <span class="bar"></span>
+        <!-- Updated Subheading -->
+        <h1 class="text-white">
+          Building Strong Bonds <br>
+          Between Horses and Riders
+        </h1>
+        <!-- Updated Call-to-Action Button -->
+        <a href="#" class="genric-btn" routerLink="/signup">Join the Club Today</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- New Section with Left Text and Right Video -->
+<section class="new-feature-area">
+  <div class="container">
+    <div class="row">
+      <!-- Left Side Text -->
+      <div class="col-lg-6">
+        <div class="left-content">
+          <h2>Ready to transform your riding experience</h2>
+          <h4>We’ve made a life that will change you</h4>
+          <p>Join our Horse Club and connect with top trainers, exclusive events, and a passionate community. Elevate
+            your skills and unlock a world of exciting opportunities with every ride.</p>
+          <p>Don’t wait—become part of the movement today!</p>
+          <a href="#" class="genric-btn">Get Started Now</a>
+        </div>
+      </div>
+      <!-- Right Side Video -->
+      <div class="col-lg-6">
+        <div class="video-container">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Feature Section -->
+<section class="feature-area relative pt-100 pb-20">
+  <div class="overlay overlay-bg"></div>
+  <div class="container">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-lg-4 col-md-6">
+        <div class="single-feature">
+          <a href="#">
+            <h4 class="text-white">Expert Technicians</h4>
+          </a>
+          <p>Our technicians are highly trained to ensure the best service with precision and care.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="single-feature">
+          <a href="#">
+            <h4 class="text-white">Professional Service</h4>
+          </a>
+          <p>We offer top-notch professional services to meet all your needs and exceed expectations.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="single-feature">
+          <a href="#">
+            <h4 class="text-white">Great Support</h4>
+          </a>
+          <p>Our customer support is always ready to assist, ensuring satisfaction at every step.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="single-feature">
+          <a href="#">
+            <h4 class="text-white">Technical Skills</h4>
+          </a>
+          <p>With cutting-edge technology and expert knowledge, we deliver the best results every time.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="single-feature">
+          <a href="#">
+            <h4 class="text-white">Highly Recommended</h4>
+          </a>
+          <p>Our service has earned glowing recommendations from satisfied clients around the world.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="single-feature">
+          <a href="#">
+            <h4 class="text-white">Positive Reviews</h4>
+          </a>
+          <p>Clients rave about our services—check out the positive reviews and testimonials!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Start home-about Area -->
+<section class="home-about-area section-gap">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 home-about-left">
+        <img class="mx-auto d-block img-fluid" src="assets/Untitled 1.png" alt="">
+      </div>
+      <div class="col-lg-6 home-about-right">
+        <h6 class="text-uppercase">Discover the App That Will Transform Your World</h6>
+        <h1>We’ve built something extraordinary just for you. <br>
+          A Life-Changing Experience</h1>
+        <p>
+          <span>This app isn’t just a tool—it’s a lifestyle upgrade.</span>
+        </p>
+        <p>
+          We’re here to understand you, grow alongside you, and deliver solutions designed just for you.
+          Step into a new era of possibilities. Whether you're an avid horse rider or just beginning your journey, we’re
+          here to support your passion. Embrace the joy of horse riding, elevate your skills, and discover how the right
+          support can transform your experience.
+        </p>
+        <a href="#" class="genric-btn">Get Started Now</a>
+      </div>
+    </div>
+  </div>
+  <!--footer-->
+  <footer class="footer-area section-gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <h4>About Us</h4>
+                    <p>
+                        At Horse Club, we are passionate about building connections between horse enthusiasts and the equestrian world. Join us to share the joy of riding, learning, and growing together.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <h4>Contact Us</h4>
+                    <p>
+                        Have a question or need support? Reach out to us anytime, and we'll be happy to assist you with all things equestrian.
+                    </p>
+                    <p class="number">
+                        Phone: 012-6532-568-9746 <br>
+                        Alternate: 012-6532-569-9748
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <h4>Our Services</h4>
+                    <p>We offer a wide range of services to support horse riders and enthusiasts, including training programs, riding lessons, and event hosting. Whether you're a beginner or an experienced rider, we’re here to guide you every step of the way.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-text">&copy; 2025 RideSwift. All rights reserved.</p>
+    </div>
+</footer>

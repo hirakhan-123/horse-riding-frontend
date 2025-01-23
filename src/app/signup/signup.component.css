@@ -1,0 +1,134 @@
+/* Custom Header */
+.custom-header {
+  background-color: #ffffff;
+  padding: 15px 0;
+}
+
+/* Header Top */
+.header-top {
+  margin-bottom: 10px;
+}
+
+/* Full-width Horizontal Line */
+.full-width-hr {
+  margin: 0;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+/* Navigation Menu */
+.nav-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-menu li {
+  display: inline-block;
+}
+
+.nav-menu li a {
+  color: #333;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.menu-active a {
+  font-weight: bold;
+  color: #000;
+}
+
+/* Buttons */
+.btn-red {
+  background-color: #e63946;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn-red:hover {
+  background-color: #b53037;
+}
+
+/* Signup Section */
+.signup-section {
+  padding: 60px 0;
+  background-color: #f8f9fa;
+}
+
+.signup-section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Flex Layout for Image and Form */
+.signup-section .row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.image-container {
+  text-align: center;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.signup-content {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+.btn-red {
+  width: 100%;
+  padding: 12px;
+  background-color: #e63946;
+  color: white;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-red:disabled {
+  background-color: #ddd;
+}
+
+.alert {
+  margin-bottom: 20px;
+}
+
+/* Space Between Signup Form and Image */
+@media (max-width: 768px) {
+  .signup-section .row {
+    flex-direction: column;
+  }
+
+  .col-lg-6 {
+    width: 100%;
+  }
+}

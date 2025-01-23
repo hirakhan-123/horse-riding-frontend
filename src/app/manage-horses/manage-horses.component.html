@@ -1,0 +1,114 @@
+<div class="add-horse-form">
+  <h2>Add New Horse</h2>
+
+  <!-- Alert Section -->
+  <div *ngIf="showAlert" class="alert" [ngClass]="alertType === 'success' ? 'alert-success' : 'alert-danger'">
+    {{ alertMessage }}
+  </div>
+
+  <!-- Reactive Form -->
+  <form [formGroup]="addHorseForm" (ngSubmit)="onSubmit()">
+    <!-- Horse Name -->
+    <div class="form-group">
+      <label for="name">Horse Name:</label>
+      <input
+        id="name"
+        formControlName="name"
+        placeholder="Enter horse name"
+        [ngClass]="{ 'is-invalid': addHorseForm.get('name')?.invalid && addHorseForm.get('name')?.touched }"
+      />
+      <div *ngIf="addHorseForm.get('name')?.invalid && addHorseForm.get('name')?.touched" class="error">
+        Horse name is required.
+      </div>
+    </div>
+
+    <!-- Breed -->
+    <div class="form-group">
+      <label for="breed">Breed:</label>
+      <input
+        id="breed"
+        formControlName="breed"
+        placeholder="Enter breed"
+        [ngClass]="{ 'is-invalid': addHorseForm.get('breed')?.invalid && addHorseForm.get('breed')?.touched }"
+      />
+      <div *ngIf="addHorseForm.get('breed')?.invalid && addHorseForm.get('breed')?.touched" class="error">
+        Breed is required.
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        placeholder="Enter description"
+        [ngClass]="{ 'is-invalid': addHorseForm.get('description')?.invalid && addHorseForm.get('description')?.touched }"
+      ></textarea>
+      <div *ngIf="addHorseForm.get('description')?.invalid && addHorseForm.get('description')?.touched" class="error">
+        Description is required.
+      </div>
+    </div>
+    <!--price-->
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input
+        type="number"
+        id="price"
+        formControlName="price"
+        placeholder="Enter price"
+        [ngClass]="{ 'is-invalid': addHorseForm.get('price')?.invalid && addHorseForm.get('price')?.touched }"
+      />
+      <div *ngIf="addHorseForm.get('price')?.invalid && addHorseForm.get('price')?.touched" class="error">
+        Price is required and must be a positive number.
+      </div>
+    </div>
+
+    <!-- Slot Fields -->
+    <div formArrayName="slots">
+      <div *ngFor="let slot of slots.controls; let i = index" [formGroupName]="i" class="form-group">
+        <label>Slot {{ i + 1 }}</label>
+        
+        <div class="slot-time">
+          <label for="time">Timing:</label>
+          <select formControlName="time" required>
+            <option value="9:00 AM">9:00 AM</option>
+            <option value="12:00 PM">12:00 PM</option>
+            <option value="4:00 PM">4:00 PM</option>
+          </select>
+          <div *ngIf="slot.get('time')?.invalid && slot.get('time')?.touched" class="error">
+            Time must be one of 9:00 AM, 12:00 PM, or 4:00 PM.
+          </div>
+        </div>
+
+        <div class="slot-availability">
+          <label for="availability">Availability:</label>
+          <select formControlName="available" required>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+          <div *ngIf="slot.get('available')?.invalid && slot.get('available')?.touched" class="error">
+            Availability is required.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image File Input -->
+    <div class="form-group">
+      <label for="image">Horse Image:</label>
+      <input
+        id="image"
+        type="file"
+        (change)="onImageChange($event)"
+        [ngClass]="{ 'is-invalid': addHorseForm.get('image')?.invalid && addHorseForm.get('image')?.touched }"
+      />
+      <div *ngIf="addHorseForm.get('image')?.invalid && addHorseForm.get('image')?.touched" class="error">
+        Image is required.
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="addHorseForm.invalid">Add Horse</button>
+  </form>
+</div>
